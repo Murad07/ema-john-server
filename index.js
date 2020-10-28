@@ -38,20 +38,20 @@ client.connect((err) => {
   });
 
   //Read data from server - all products
-  // app.get('/products', (req, res) => {
-  //   productsCollection.find({}).toArray((err, documents) => {
-  //     res.send(documents);
-  //   });
-  // });
-
   app.get('/products', (req, res) => {
-    const search = req.query.search;
-    productsCollection
-      .find({ name: { $regex: search } })
-      .toArray((err, documents) => {
-        res.send(documents);
-      });
+    productsCollection.find({}).toArray((err, documents) => {
+      res.send(documents);
+    });
   });
+
+  // app.get('/products', (req, res) => {
+  //   const search = req.query.search;
+  //   productsCollection
+  //     .find({ name: { $regex: search } })
+  //     .toArray((err, documents) => {
+  //       res.send(documents);
+  //     });
+  // });
 
   // load single product
   app.get('/product/:key', (req, res) => {
